@@ -1,17 +1,17 @@
 language: ruby
 rvm:
-  - 2.4.1
+- 2.4.1
 services:
-  - postgresql
+- postgresql
 before_script:
-  - psql -c 'create database zab_ui_test;' -U postgres
+- psql -c 'create database zab_ui_test;' -U postgres
 script:
-  - bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test
-  - bundle exec rspec
+- bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test
+- bundle exec rspec
 deploy:
   provider: heroku
   api_key:
-    secure: lUIuDVxGzkgAYOzdzbJlHdFr8utUn5lA2A4/a1XNCL5gpwNsvLQfKg3Q6DjEj9Lzez6AMGSn9MRrd8JAAanatkYtEwer6kzv3yJgGgcVbU6RIm99YsJ7rPGzSoFPt7f6KdyIUlrCPtqxZscsTzTQOGhNL3CPB/JaB9SSoeXj9pEhacM4OJv0mioL7/dYrPNGURbFsbl4P5byH8WtYYGybh+7Rr7yLlMqE6vFBCos4mwICdw3WLHkGy8Q/oH1wZtXRLr4ZqB851o7roSd9/DPg4k7E/FG0b2CLzD2iPETkOyxf7T2y9KZcTkmrJLwT5WuAWm4rb88v/e/1aU/lWUEaz+UnxCSjDcqPW4L4KI/I/YdQVkDEAAC2e1eqqVKR5VBVxMw26xOfhznsLwg1EqW9qpv3FnhAp9poV30u7rcrv0T+31TOLxCpNSQbPF39ZXOtNv7h2BFGWKqcdWzcGj6+RJQBySQ/0DlIEaJnY41SWCFRWIG5V8PP8LV29ugcJNYnkHJ5STtFtldo6Ie5yFn8jyNRVBaVkiMt5CyrNtGnfLdAU/t3mNMiA6B9GVPZrukFWbE7XaQkd37BXZq48tcavMrlBdDt/JvGHCA9x1y9KBCfQnRq6dYa1HGEGp5NkjNSIu62vI27rqHXhyXnKiLWrFh4LKYD3lVJseDAJBneO0=
-  skip_cleanup: true
+    secure: gevlk5BjCiUB1Yzv/aNhWjcR0cDTmFfnFE7hmyu9IM2y5wI65WGSgYcy9aoNYZkma8acdP49KN7dwf8Rr1rC/V3vwdFXrMmF0DdL8yiGA2VqnsupZDvzWJcgXoZ+WQWInjmuV6g039j3ld5sF1DQbePj+o/ALfxzcGkBpIRxVkRggxxIfiFQ/cPT2P+tLF9ehI7bTvHsEWMbxGzjZ8wxbXZbbR+OkW0YuL8REA0tETzEinihNcbksFDrdCIGxulVrjwHyEYgP+abOdL2SFLNT3Mixf6A2QM6kpV1dlj8SCQeuslircUH7+GQNXp7vpIePOStPldecHnHjI7dnCV7upH3gYhVL570WYEmDgrEcAxb674qGQMf16RX9XmhPqQLvylVJYPalGH/3XMWCrkjEVJYpbh5+KfrYK7/4+cxCn1dpcSFySh2rB1GflCsnUPxdxGPJH86MkEzLykpgwb20hLFCBkQte/0FamdBNtWhEik7hgJah0Di+lD1p8kMl0l5CmN1fq57f6JLULqkOhmRVk2iF6PBSNL+Z9o1wS2rGs0K94pkQamLN44Jbo0qwXNvKPS4PFgDhrfntvCsn29PU2Av/AinDxuw8ZeRaAe2Y5VFQx+Pfqe+q6+9EQJt+QnCtFprm/Z8tdPNIP1VmAvQVLyZwLmSYkB2MfbHne0on0=
+  app: zeroandbeyond
   on:
     repo: hillstew/zab-ui
