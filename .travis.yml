@@ -8,3 +8,8 @@ before_script:
 script:
   - bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test
   - bundle exec rspec
+deploy:
+  provider: heroku
+  api_key:
+    secure: b+wMjWhVQDDKj5YLJbMclzCHPv+j22gqo0OL5HOvrIMEb7GKlr5Mj5CPgDf+Awy2GzsCF1l2taA4RGtqmnFctAKmpUorXKiF+gvNPyYrZNAJxUtVSq1570n/HSboDGtrSzRVr95BMbvoEXqC3RprAESnz9uycUxi0PIs06Ou70PCSuRvkVVmxl7VMYCWGCFaXkwrUhkeuHoaQJaY0jSYG/KLV6O1JyHnqrO81TtuI/BDq7zvz1mrP2mlAM/liSvxL7eN2r475sf5/FcfGu3OUvxfh+byZo0ItyniPZyyHMXNTwpN8TtqjEDaJdWiyOL28wvTJvgHvlW+ikZIs4GFrvaocnkxyYjakXhkLh4GNO8cFFML4C1nsrnOmbuTUJzQ1WanAiTlqMYltE5GyGv4e56qKhddbeoFG6MeKAgUk3bW/pqdfBKbHnx09Ggme18qj5bS7fLu8orHGCYag2s8rjWtB+dRBlYYogQh/4r6yM9TOTMP+ch7ntF0C04vlumjSDGy/jpwbgfPja0ufPl3ZQZdR5xvbzI9Bw6SXIH9Nxo2Jj2Aa+a2cm951iQPnxRe319QBjtio70r8N0uTBwM4zlSf9mBOkaT1cIk72SlppOgc9YkKZ9spZcp6YKm2GfZHPBx4oCJEO91Qfa/mmCvxUdwTYY8588N4cYYA2g/6i0=
+    app: zeroandbeyond
