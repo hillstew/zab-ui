@@ -10,9 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2019_12_18_225703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accounts", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "ynab_id"
+    t.float "starting_total"
+    t.float "interest_rate", default: 0.0
+    t.float "min_payment", default: 0.0
+    t.boolean "paid_off?"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "connections", force: :cascade do |t|
+    t.bigint "user_id"
+    t.boolean "accepted?"
+    t.bigint "connected_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "budget_id"
+    t.string "token"
+    t.string "last_login"
+    t.boolean "reminders?", default: true
+    t.float "monthly_payment", default: 0.0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
