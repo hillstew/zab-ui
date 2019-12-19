@@ -1,0 +1,18 @@
+<h1>SIGNUP</h1>
+<section>
+  <%= form_for @user, url: '/signup' do |f| %>
+    <div>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, class: "block col-12 field" %>
+    </div>
+    <div>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, class: "block col-12 field" %>
+    </div>
+    <div>
+      <%= f.label :email %>
+      <%= f.text_field :email, class: "block col-12 field" %>
+    </div>
+    <%= f.submit 'Signup with YNAB', class: "mt2 btn btn-primary mb1 bg-teal" %>
+  <% end %>
+</section>
