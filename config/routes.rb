@@ -4,4 +4,8 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   get '/auth/ynab/callback', to: 'users#create'
   post '/signup', to: 'users#create'
+
+  get '/signup/profile', to: 'users#edit'
+  patch '/signup/profile', to: 'users#update'
+  get '/signup/accounts', to: 'accounts#new'
 end
