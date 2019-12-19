@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get '/signup/profile', to: 'users#edit'
   patch '/signup/profile', to: 'users#update'
   get '/signup/accounts', to: 'accounts#new'
+  post '/signup/accounts', to: 'accounts#create'
 end
