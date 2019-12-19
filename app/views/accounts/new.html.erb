@@ -1,0 +1,20 @@
+<h1>Choose Accounts</h1>
+<section>
+  <%= form_tag signup_accounts_path do %>
+    <% @accounts.each do |account| %>
+      <div>
+        <%= label_tag account[:name] %>
+        <%= check_box_tag account[:name] %>
+      </div>
+      <div>
+        <%= label_tag 'Interest' %>
+        <%= number_field_tag :"#{account[:name]}[interest]" %>
+      </div>
+      <div>
+        <%= label_tag 'Minimum Payment' %>
+        <%= number_field_tag 'Minimum Payment' %>
+      </div>
+    <% end %>
+    <%= submit_tag 'Select' %>
+  <% end %>
+</section>
