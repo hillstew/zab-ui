@@ -11,6 +11,9 @@ class AccountsController < ApplicationController
     response = File.read('./spec/fixtures/accounts_response.json')
     raw_accounts_data = JSON.parse(response, symbolize_names: true)
     @accounts = raw_accounts_data[:data][:accounts].find_all{|account| account[:deleted] == false}
+  end
+
+  def create
     binding.pry
   end
 end
