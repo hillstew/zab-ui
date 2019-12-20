@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   patch '/signup/profile', to: 'users#update'
   get '/signup/accounts', to: 'accounts#new'
   post '/signup/accounts', to: 'accounts#create'
+  get '/dashboard', to: 'dashboard#index'
 end
