@@ -14,14 +14,15 @@ class Account < ApplicationRecord
   def total_months
     count = 0
     balance = self.balance
+    interest_rate = (self.interest_rate / 100)
+
     while balance > 0
-      # min_pay = self.balance  * (self.interest_rate / 100)
-      interest_paid = self.min_payment * (self.interest_rate / 100 )
-      balance = balance - (self.min_payment - interest_paid)
+      interest_paid = (interest_rate / 12) * balance
+      principal_paid = self.min_payment - interest_paid
+      balance = balance - principal_paid
       count += 1
     end
     payoff_month(count)
-    # binding.pry
   end
 
   def payoff_month(count)
