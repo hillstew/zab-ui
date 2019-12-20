@@ -4,16 +4,18 @@
     <% @accounts.each do |account| %>
       <div>
         <%= label_tag account[:name] %>
-        <%= check_box_tag account[:name] %>
+        <%= check_box_tag :"accounts[#{account[:name]}][checked]" %>
       </div>
       <div>
         <%= label_tag 'Interest' %>
-        <%= number_field_tag :"#{account[:name]}[interest]" %>
+        <%= number_field_tag :"accounts[#{account[:name]}][interest_rate]" %>
       </div>
       <div>
         <%= label_tag 'Minimum Payment' %>
-        <%= number_field_tag 'Minimum Payment' %>
+        <%= number_field_tag :"accounts[#{account[:name]}][min_payment]" %>
       </div>
+      <%= hidden_field_tag :"accounts[#{account[:name]}][ynab_id]", account[:id] %>
+      <%= hidden_field_tag :"accounts[#{account[:name]}][starting_total]", account[:cleared_balance] %>
     <% end %>
     <%= submit_tag 'Select' %>
   <% end %>
