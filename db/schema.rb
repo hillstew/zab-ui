@@ -21,7 +21,9 @@ ActiveRecord::Schema.define(version: 2019_12_18_225703) do
     t.float "starting_total"
     t.float "interest_rate", default: 0.0
     t.float "min_payment", default: 0.0
-    t.boolean "paid_off?"
+    t.boolean "paid_off?", default: false
+    t.string "name"
+    t.float "balance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
