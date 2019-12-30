@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   validates_presence_of :access_token
   validates_presence_of :refresh_token
-  validates_presence_of :reminders?
+  # validates_presence_of :reminders?
   validates_presence_of :last_login
   validates_presence_of :monthly_payment
   # validates :email, uniqueness: true
