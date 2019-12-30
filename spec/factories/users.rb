@@ -4,7 +4,8 @@ FactoryBot.define do
     last_name { "MyString" }
     email { "email@email.com" }
     budget_id { 1 }
-    token { 1 }
+    access_token { 1 }
+    refresh_token { 0 }
     last_login { "MyString" }
     reminders? { false }
     monthly_payment { 1.5 }

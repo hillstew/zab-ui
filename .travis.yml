@@ -1,13 +1,13 @@
 language: ruby
 rvm:
-  - 2.4.1
+- 2.4.1
 services:
-  - postgresql
+- postgresql
 before_script:
-  - psql -c 'create database zab_ui_test;' -U postgres
+- psql -c 'create database zab_ui_test;' -U postgres
 script:
-  - bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test
-  - bundle exec rspec
+- bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test
+- bundle exec rspec
 deploy:
   provider: heroku
   api_key:
@@ -15,3 +15,6 @@ deploy:
   app: zeroandbeyond
   on:
     repo: hillstew/zab-ui
+env:
+  global:
+    secure: jvFEdoSZ6iIzrlWYhk5gxF2LbiMYrkQxOdgQAGNLWAjjTuqFj5i5hKzq7iVHQnTSjA4Kn089iKjErjawHdw38us2fZWhsNOkXU8Slg+DTCzFfZ1EAvRFmgVCTIp0Gzm3T1dCmRpQbfa5aOyiRghI6f3vS32G3U4/VYRqbzyMkX3DzLh8u+tj0hdvyUj+C4ncvltlesBlfppC7edB1x38XMXkWKtAH9aD0XrAwDZtZ84eGErWIwLHJcmOCxU7iw+VEqovth15DDbwsf0+JxPGPhFTKcKE1odMl3kiVQiiSHSpw56PUiiWMczv77/1hQYLCw3LPH3f9bau9Pc+YnZQL625JhsMpdDf88O4EmD/a5ZEwhYqFOcF3aaaxNnleel7ysdKdRASe1WiguasY9v3PxbApffUXPBJSWREmSo4HAWNfY8QupjkCAn7RN3fYU9bgEktxIKNxklDKL74PRzoS+LwpxjVSBnZIwY+8sNp/crwS0TyuegTpgBK0KYB/ORsgm6kQ9yaJg1JyFhXTZ5FrY9oGIO5X4Svm65bSN9EbpRwInBL4PTbkPs2d4VyDOk8V2dlJ3oBbgBlOIZi3A6PL5BS477gOh7Cf0F6KImIHIawXqfUv8hMzvTEkr+F9lpwUID33w0/8NrEWssXHrrA9GTCDqYXf/ggto1UdCUf5No=
