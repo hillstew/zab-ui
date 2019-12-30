@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   def create
     tokens = YnabService.new.fetch_tokens(params['code'])
     user_data = format_user_data(tokens)
-    binding.pry
     user = User.create!(user_data)
     session[:user_id] = user.id
     redirect_to signup_profile_path
