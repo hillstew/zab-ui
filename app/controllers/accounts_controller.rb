@@ -1,24 +1,13 @@
 class AccountsController < ApplicationController
   def new
-    # service = YnabService.new
-    # service.accounts
-
-    conn = Faraday.new("https://api.youneedabudget.com/v1/budgets/default") do |faraday|
-      faraday.params["access_token"] = current_user.access_token
-      faraday.adapter Faraday.default_adapter
-    end
-
-    response = File.read('./spec/fixtures/accounts_response.json')
-    raw_accounts_data = JSON.parse(response, symbolize_names: true)
-    @accounts = raw_accounts_data[:data][:accounts].find_all{|account| account[:deleted] == false}
+    render locals: {
+      user: UserDecorator.new(current_user)
+    }
   end
 
   def create
     params['accounts'].each do |account, details|
-      if details.has_key?('checked')
-        params = account_params(account, details)
-        account = Account.create!(params)
-      end
+      check_key(account, details)
     end
     redirect_to dashboard_path
   end
@@ -34,6 +23,13 @@ class AccountsController < ApplicationController
       interest_rate: details['interest_rate'].to_f,
       balance: (details['starting_total'].to_f.abs / 1000)
     }
+  end
+
+  def check_key(account, details)
+    if details.has_key?('checked')
+      params = account_params(account, details)
+      account = Account.create!(params)
+    end
   end
 
 

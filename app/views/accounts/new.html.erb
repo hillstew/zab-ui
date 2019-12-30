@@ -1,7 +1,7 @@
 <h1>Choose Accounts</h1>
 <section>
   <%= form_tag signup_accounts_path do %>
-    <% @accounts.each do |account| %>
+    <% user.active_accounts.each do |account| %>
       <div>
         <%= label_tag account[:name] %>
         <%= check_box_tag :"accounts[#{account[:name]}][checked]" %>
