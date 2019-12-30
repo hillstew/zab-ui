@@ -8,7 +8,7 @@ class Account < ApplicationRecord
   validates_presence_of :min_payment
 
   def formatted_balance
-    starting_total = self.starting_total / 1000
+    self.starting_total / 1000
   end
 
   def total_months
