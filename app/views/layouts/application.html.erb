@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ZabUi</title>
+    <title>ZAB</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
+
 
   <body>
     <%= button_to "Logout", logout_path, method: :delete if current_user %>
@@ -16,6 +17,8 @@
         <%= content_tag :div, msg, class: name %>
       <% end %>
     </div>
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>

@@ -1,22 +1,27 @@
-<h1>Choose Accounts</h1>
-<section>
+<section class="form-section">
+<h1>Enter Account Information</h1>
   <%= form_tag signup_accounts_path do %>
+    <div class="form-group">
     <% user.active_accounts.each do |account| %>
-      <div>
-        <%= label_tag account[:name] %>
-        <%= check_box_tag :"accounts[#{account[:name]}][checked]" %>
-      </div>
-      <div>
-        <%= label_tag 'Interest' %>
-        <%= number_field_tag :"accounts[#{account[:name]}][interest_rate]" %>
-      </div>
-      <div>
-        <%= label_tag 'Minimum Payment' %>
-        <%= number_field_tag :"accounts[#{account[:name]}][min_payment]" %>
+      <h4><%= account[:name] %></h4>
+      <div class="account-wrapper">
+        <div>
+          <%= label_tag account[:name] %>
+          <%= check_box_tag :"accounts[#{account[:name]}][checked]" %>
+        </div>
+        <div class="account-details">
+          <%= label_tag 'Minimum Payment' %>
+          <%= number_field_tag :"accounts[#{account[:name]}][min_payment]", nil, class: "form-control" %>
+        </div>
+        <div class="account-details">
+          <%= label_tag 'Interest' %>
+          <%= number_field_tag :"accounts[#{account[:name]}][interest_rate]", nil, class: "form-control" %>
+        </div>
       </div>
       <%= hidden_field_tag :"accounts[#{account[:name]}][ynab_id]", account[:id] %>
       <%= hidden_field_tag :"accounts[#{account[:name]}][starting_total]", account[:cleared_balance] %>
     <% end %>
-    <%= submit_tag 'Select' %>
+    <%= submit_tag 'Select', class:"btn btn-primary" %>
+    </div>
   <% end %>
 </section>

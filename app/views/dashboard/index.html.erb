@@ -1,7 +1,7 @@
 <h1>Your debt payoff schedule</h1>
 <div class="container">
   <table class="table table-striped">
-    <thead>
+    <thead class="thead-dark">
       <tr>
         <th>Name</th>
         <th>Current Balance</th>
@@ -14,7 +14,7 @@
     </thead>
     <tbody>
   <% @accounts.each do |account| %>
-  <section id= "account-<%= account.id %>"
+  <section id= "account-<%= account.id %>">
     <tr>
         <td><%= account.name %></td>
         <td><%= number_to_currency(account.balance) %></td>
