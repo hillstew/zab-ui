@@ -40,3 +40,18 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
 end
+
+#Google Omniauth:
+OmniAuth.config.test_mode = true
+
+OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
+  :info =>
+    {:email =>"gthompson@fastmail.com",
+     :first_name =>"Graham",
+     :last_name =>"Thompson",
+     :image =>"https://lh3.googleusercontent.com/-DOxXSdLajxg/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rc49PQDjVWUIprfzpDkZ27ZD2Fxvw/photo.jpg"},
+  :credentials =>
+    {:token => ENV["GOOGLE_TEST_TOKEN"]}
+})
+
+Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:google_oauth2]
