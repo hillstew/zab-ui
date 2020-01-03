@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/signup/accounts', to: 'accounts#new'
   post '/signup/accounts', to: 'accounts#create'
   get '/dashboard', to: 'dashboard#index'
+  get '/snowball/:amount', to: 'dashboard/snowball#index'
 
   get '/auth/google_oauth2/callback', to: 'users#create'
 end
