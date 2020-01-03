@@ -15,4 +15,19 @@ export default class extends Controller {
   connect() {
     this.outputTarget.textContent = 'Hello, Stimulus!'
   }
+  calculateSnowball(event) {
+    event.preventDefault()
+    console.log(event)
+    const {valueAsNumber:amount} = event.target.previousSibling.previousSibling
+    fetch(`/snowball/${amount}`)
+      .then(response => response.json())
+      
+      .then(function(data) {
+        console.log(data)
+      })
+      .catch(error => console.log(error))
+
+    const account_1 = document.querySelector(`#account1`)
+    account_1.innerText = '5000'
+  }
 }
