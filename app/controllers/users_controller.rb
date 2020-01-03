@@ -4,29 +4,30 @@ class UsersController < ApplicationController
   end
 
   def create
-    tokens = YnabService.new.fetch_tokens(params['code'])
-    user_data = format_user_data(tokens)
-    user = User.create!(user_data)
-    session[:user_id] = user.id
-    redirect_to signup_profile_path
-  end
-
-  def update
-    current_user.update!(user_params)
-    redirect_to signup_accounts_path
-  end
-
-  def edit
-    @user = current_user
+    if current_user
+      redirect_to dashboard_path
+    else
+      user = User.find_by(email: user_data[:email])
+      if user.nil?
+        new_user = User.create(user_data)
+        session[:user_id] = new_user.id
+        redirect_to signup_ynab_path
+      else
+        session[:user_id] = user.id
+        redirect_to dashboard_path
+      end
+    end
   end
 
   private
 
-  def format_user_data(raw_token_data)
+  def user_data
     {
-      access_token: raw_token_data[:access_token],
-      refresh_token: raw_token_data[:refresh_token],
-      last_login: DateTime.now
+      email: request.env['omniauth.auth']["info"]["email"],
+      first_name: request.env['omniauth.auth']["info"]["first_name"],
+      last_name: request.env['omniauth.auth']["info"]["last_name"],
+      image: request.env['omniauth.auth']["info"]["image"],
+      google_token: request.env['omniauth.auth']["credentials"]["token"]
     }
   end
 
