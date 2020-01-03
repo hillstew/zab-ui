@@ -14,7 +14,7 @@ class YnabController < ApplicationController
 
   def format_user_data(token_data)
     {
-      access_token: raw_token_data[:access_token],
+      access_token: token_data[:access_token],
       refresh_token: token_data[:refresh_token],
       last_login: DateTime.now
     }
