@@ -12,7 +12,7 @@ class YnabController < ApplicationController
 
   private
 
-  def format_user_data(raw_token_data)
+  def format_user_data(token_data)
     {
       access_token: raw_token_data[:access_token],
       refresh_token: raw_token_data[:refresh_token],
