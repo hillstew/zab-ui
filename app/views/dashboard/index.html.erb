@@ -1,3 +1,8 @@
+<%= javascript_pack_tag 'application' %>
+<form data-controller="hello" method="get">
+  <input data-target="hello.output" type="number" name="snowball">
+  <button data-action='click->hello#calculateSnowball' type="button" name="button">Calculate</button>
+</form>
 <h1>Your debt payoff schedule</h1>
 <div class="container">
   <table class="table table-striped">
@@ -19,7 +24,7 @@
         <td><%= account.name %></td>
         <td><%= number_to_currency(account.balance) %></td>
         <td><%= number_to_percentage(account.interest_rate, precision: 2) %></td>
-        <td><%= number_to_currency(account.min_payment) %></td>
+        <td id='account<%= account.id %>'><%= number_to_currency(account.min_payment) %></td>
         <td>$400</td>
         <td>$400</td>
         <td><%= account.total_months %></td>
