@@ -4,7 +4,7 @@ RSpec.describe 'As a visitor' do
   it 'I can authenticate with Google' do
     visit welcome_path
 
-    click_link 'Login with Google'
+    click_button 'Login with Google'
 
     user = User.last
 
