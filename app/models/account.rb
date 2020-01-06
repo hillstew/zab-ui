@@ -26,6 +26,6 @@ class Account < ApplicationRecord
   end
 
   def payoff_month(count)
-    (DateTime.now + count.months).strftime("%b %Y")
+    (DateTime.now + count.months).strftime('%b %Y')
   end
 end
