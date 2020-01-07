@@ -4,7 +4,8 @@ class YnabController < ApplicationController
   end
 
   def create
-    tokens = YnabService.new.fetch_tokens(params['code'])
+    service = YnabService.new(current_user)
+    tokens = service.fetch_tokens(params['code'])
     user_data = format_user_data(tokens)
     current_user.update!(user_data)
     redirect_to signup_accounts_path
