@@ -3,14 +3,8 @@ class YnabService
     @current_user = user
   end
 
-  def fetch_accounts
-    response = File.read('./spec/fixtures/accounts_response.json')
-    # response = connection.get('accounts')
-    parse_data(response)
-  end
-
   def fetch_tokens(code)
-    response = Faraday.post("https://app.youneedabudget.com/oauth/token?client_id=#{ENV['CLIENT_ID']}&client_secret=#{ENV['CLIENT_SECRET']}&redirect_uri=http://localhost:3000/auth/ynab/callback&grant_type=authorization_code&code=#{code}")
+    response = Faraday.post("https://app.youneedabudget.com/oauth/token?client_id=#{ENV['CLIENT_ID']}&client_secret=#{ENV['CLIENT_SECRET']}&redirect_uri=https://zeroandbeyond.herokuapp.com/auth/ynab/callback&grant_type=authorization_code&code=#{code}")
     parse_data(response.body)
   end
 
