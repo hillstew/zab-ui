@@ -1,6 +1,11 @@
 class YnabService
+  def initialize(user)
+    @current_user = user
+  end
+
   def fetch_accounts
     response = File.read('./spec/fixtures/accounts_response.json')
+    # response = connection.get('accounts')
     parse_data(response)
   end
 
@@ -13,7 +18,7 @@ private
 
   def connection
     Faraday.new("https://api.youneedabudget.com/v1/budgets/default") do |faraday|
-      faraday.params["access_token"] = current_user.access_token
+      faraday.params["access_token"] = @current_user.access_token
       faraday.adapter Faraday.default_adapter
     end
   end
