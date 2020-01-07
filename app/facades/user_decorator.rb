@@ -1,7 +1,7 @@
 class UserDecorator < SimpleDelegator
   def initialize(user)
     @user = super(user)
-    @service = YnabService.new
+    @service = YnabService.new(user)
   end
 
   def active_accounts
