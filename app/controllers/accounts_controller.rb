@@ -28,7 +28,7 @@ class AccountsController < ApplicationController
     def check_key(account, details)
       if details.has_key?('checked')
         params = account_params(account, details)
-        account = Account.create!(params)
+        account = Account.create(params)
       end
     end
 end
