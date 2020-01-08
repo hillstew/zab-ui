@@ -14,6 +14,7 @@ class UsersController < ApplicationController
         redirect_to signup_ynab_path
       else
         session[:user_id] = user.id
+        user.update(last_login: DateTime.now)
         redirect_to dashboard_path
       end
     end
@@ -27,7 +28,8 @@ class UsersController < ApplicationController
       first_name: request.env['omniauth.auth']["info"]["first_name"],
       last_name: request.env['omniauth.auth']["info"]["last_name"],
       image: request.env['omniauth.auth']["info"]["image"],
-      google_token: request.env['omniauth.auth']["credentials"]["token"]
+      google_token: request.env['omniauth.auth']["credentials"]["token"],
+      last_login: DateTime.now
     }
   end
 
