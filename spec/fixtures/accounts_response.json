@@ -2,17 +2,17 @@
   "data": {
     "accounts": [
       {
-        "id": "9055f9f9-b147-4886-840c-69fb86def1b0",
-        "name": "Chase",
+        "id": "0b8a5f1b-5993-4b0e-b289-650dbbfd22e7",
+        "name": "Barclay",
         "type": "creditCard",
         "on_budget": true,
         "closed": false,
         "note": null,
-        "balance": -2345090,
-        "cleared_balance": -2345090,
+        "balance": -12323000,
+        "cleared_balance": -12323000,
         "uncleared_balance": 0,
-        "transfer_payee_id": "d49f6259-596f-4042-a5b5-5d3e29c8a565",
-        "deleted": true
+        "transfer_payee_id": "f1510ec8-c55e-4f4b-81ec-623ee7546b13",
+        "deleted": false
       },
       {
         "id": "471bf3ba-ab03-48fc-bbe2-2650414eacf4",
@@ -28,16 +28,16 @@
         "deleted": false
       },
       {
-        "id": "0b8a5f1b-5993-4b0e-b289-650dbbfd22e7",
-        "name": "Barclay",
+        "id": "9055f9f9-b147-4886-840c-69fb86def1b0",
+        "name": "Chase",
         "type": "creditCard",
         "on_budget": true,
         "closed": false,
         "note": null,
-        "balance": -12323000,
-        "cleared_balance": -12323000,
+        "balance": -2345090,
+        "cleared_balance": -2345090,
         "uncleared_balance": 0,
-        "transfer_payee_id": "f1510ec8-c55e-4f4b-81ec-623ee7546b13",
+        "transfer_payee_id": "d49f6259-596f-4042-a5b5-5d3e29c8a565",
         "deleted": false
       }
     ],

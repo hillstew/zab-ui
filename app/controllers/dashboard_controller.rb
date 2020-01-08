@@ -1,5 +1,9 @@
 class DashboardController < ApplicationController
   def index
-    @accounts = current_user.accounts
+    if current_user.snowball_amount == 0
+      @accounts = current_user.accounts.ordered
+    else 
+      @accounts = current_user.accounts.snowball(current_user.snowball_amount)
+    end
   end
 end

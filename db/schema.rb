@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_18_225703) do
+ActiveRecord::Schema.define(version: 2020_01_06_225048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,9 @@ ActiveRecord::Schema.define(version: 2019_12_18_225703) do
     t.float "balance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "snowball", default: 0.0
+    t.string "payoff_date"
+    t.integer "count", default: 0
   end
 
   create_table "connections", force: :cascade do |t|
@@ -49,6 +52,7 @@ ActiveRecord::Schema.define(version: 2019_12_18_225703) do
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "snowball_amount", default: 0
   end
 
 end
