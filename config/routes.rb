@@ -14,4 +14,7 @@ Rails.application.routes.draw do
   get '/snowball/:amount', to: 'dashboard/snowball#index'
 
   get '/auth/google_oauth2/callback', to: 'users#create'
+
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 end
