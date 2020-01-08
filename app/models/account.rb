@@ -74,7 +74,7 @@ class Account < ApplicationRecord
   end
 
   def self.current_total
-    sum(:balance)
+    sum(:starting_total) - sum(:balance)
   end
 
   def self.debt_free_date
