@@ -4,7 +4,7 @@ RSpec.describe 'YNAB Connection' do
   it "I can connect my YNAB account" do
     user = create(:user, access_token: ENV['YNAB_TOKEN'], email: 'hill@hill.com', google_token: "123456789", reminders?: false)
 
-    stub_request(:get, "https://api.youneedabudget.com/v1/budgets/default/accounts").
+    stub_request(:get, "https://zab-service.herokuapp.com/api/v1/accounts/#{user.access_token}").
       to_return(status: 200, body: File.read('./spec/fixtures/accounts_response.json'))
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
