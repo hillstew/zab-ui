@@ -64,4 +64,22 @@ class Account < ApplicationRecord
       end
     balance
   end
+
+  def self.starting_total
+    sum(:starting_total)
+  end
+
+  def self.paid_off_percentage
+    (sum(:starting_total) - sum(:balance)) / sum(:starting_total) * 100
+  end
+
+  def self.current_total
+    sum(:balance)
+  end
+
+  def self.debt_free_date
+    # binding.pry
+    last.payoff_date
+  end
+
 end
