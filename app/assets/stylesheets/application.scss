@@ -21,6 +21,12 @@
 body {
   display: grid;
   box-sizing: border-box;
+  grid-template-columns: 20% 1fr;
+  height: 100vh;
+}
+
+aside {
+  background-color: tomato;
 }
 
 .welcome {
@@ -104,4 +110,37 @@ body {
 
 .account-details {
   margin-right: 5px;
+}
+
+.progress-control-wrapper {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  width: 100%;
+}
+
+.debt-progress {
+  height: 50px;
+  width: 70%;
+  text-align: right;
+}
+
+.progress-current-total {
+  font-size: 20px;
+  text-align: left;
+  margin-left: 5px;
+}
+
+.progress-starting-total {
+  font-size: 20px;
+  margin-right: 5px;
+  width: 100%;
+}
+
+.debt-payoff-bar {
+  // display: flex;
+  // flex-direction: row;
+  height: 50px;
+  // justify-content: space-between;
+  width: 100%;
 }
