@@ -1,12 +1,3 @@
-// Visit The Stimulus Handbook for more details
-// https://stimulusjs.org/handbook/introduction
-//
-// This example controller works with specially annotated HTML like:
-//
-// <div data-controller="hello">
-//   <h1 data-target="hello.output"></h1>
-// </div>
-
 import { Controller } from 'stimulus';
 
 export default class extends Controller {
@@ -22,7 +13,6 @@ export default class extends Controller {
     } = event.target.previousSibling.previousSibling;
     fetch(`/snowball/${amount}`)
       .then(response => response.json())
-      // .then(response => console.log(response))
       .then(accounts => this.displayNewPayOff(accounts))
       .catch(error => console.log(error));
   }

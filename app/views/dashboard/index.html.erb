@@ -1,8 +1,37 @@
 <%= javascript_pack_tag 'application' %>
-<form data-controller="hello" method="get">
-  <input data-target="hello.output" type="number" name="snowball">
-  <button data-action='click->hello#calculateSnowball' type="button" name="button">Calculate</button>
-</form>
+<section class="progress-control-wrapper">
+  <div class="progress debt-progress">
+    <div
+        class="progress-bar debt-payoff-bar"
+        role="progressbar"
+        style="width: <%= number_to_percentage(@accounts.paid_off_percentage) %>"
+        aria-valuenow=" <%= @accounts.paid_off_percentage %>"
+        aria-valuemin="0"
+        aria-valuemax="100">
+        <p class="progress-current-total">
+          <%= number_to_currency(@accounts.current_total) %>
+        </p>
+    </div>
+    <p class="progress-starting-total">
+      <%= number_to_currency(@accounts.starting_total) %>
+    </p>
+  </div>
+  <p>
+    <span
+      aria-label="tada emoji"
+      role="img">
+      🎉
+    </span>
+    Debt Freedom Date - <%= @accounts.debt_free_date %>
+  </p>
+  <form class="snowball-control" data-controller="payoff" method="get">
+    <input data-target="payoff.output" type="number" name="snowball">
+    <button data-action='click->payoff#calculateSnowball' type="button" name="button">Calculate</button>
+  </form>
+</section>
+
+
+
 <h1>Your debt payoff schedule</h1>
 <div class="container">
   <table class="table table-striped">
