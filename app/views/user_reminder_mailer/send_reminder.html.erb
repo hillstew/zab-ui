@@ -1,2 +1,10 @@
-<h1>We miss you!</h1>
-<p>Come back to ZAB...please</p>
+<h1><%= @user.first_name %>, we miss you!</h1>
+
+<p>
+  Paying off your debts is tough. We're here to help. We noticed you haven't logged in a while.
+  To login, please visit <%= link_to 'Zero and Beyond', 'https://zeroandbeyond.herokuapp.com/' %>.
+</p>
+
+<p>Sincerely,</p>
+
+<p>The ZAB Squad</p>

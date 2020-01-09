@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    if current_user
+    if current_user && !current_user.accounts.empty?
       redirect_to dashboard_path
     else
       user = User.find_by(email: user_data[:email])
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       else
         session[:user_id] = user.id
         user.update(last_login: DateTime.now)
-        redirect_to dashboard_path
+        redirect_to signup_ynab_path
       end
     end
   end
