@@ -11,9 +11,6 @@
 
 
   <body>
-    <aside>
-      <%= button_to "Logout", logout_path, method: :delete if current_user %>
-    </aside>
     <main>
       <div class="flash-message">
         <% flash.each do |name, msg| %>
