@@ -11,7 +11,7 @@ RSpec.describe 'YNAB Connection' do
 
     visit signup_accounts_path
 
-    expect(page).to have_content("Gma")
+    expect(page).to have_content("GMA")
 
     fill_in 'accounts[GMA][interest_rate]', with: 10
 
