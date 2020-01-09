@@ -8,5 +8,6 @@ FactoryBot.define do
     last_login { "MyString" }
     reminders? { false }
     monthly_payment { 1.5 }
+    google_token { 1 }
   end
 end

@@ -7,10 +7,6 @@ class Account < ApplicationRecord
   validates_presence_of :interest_rate
   validates_presence_of :min_payment
 
-  def formatted_balance
-    self.starting_total / 1000
-  end
-
   def total_months(snowball = 0, date = DateTime.now, balance = self.balance)
     count = 0
     balance = balance
@@ -78,8 +74,6 @@ class Account < ApplicationRecord
   end
 
   def self.debt_free_date
-    # binding.pry
     last.payoff_date
   end
-
 end

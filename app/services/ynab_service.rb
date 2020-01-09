@@ -10,13 +10,6 @@ class YnabService
 
 private
 
-  def connection
-    Faraday.new("https://api.youneedabudget.com/v1/budgets/default") do |faraday|
-      faraday.params["access_token"] = @current_user.access_token
-      faraday.adapter Faraday.default_adapter
-    end
-  end
-
   def parse_data(response)
     JSON.parse(response, symbolize_names: true)
   end
