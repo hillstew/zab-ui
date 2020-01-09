@@ -22,13 +22,13 @@
             <%= number_to_currency(@accounts.starting_total) %>
           </p>
         </div>
-        <section class='snowball-wrapper'>
-          <p>Enter your monthly debt budget</p>
-          <form class="snowball-control" data-controller="payoff" method="get" >
-            <input class="snowball-input" data-target="payoff.output" type="number" name="snowball">
-            <button data-action='click->payoff#calculateSnowball' type="button" name="button" class= "btn btn-primary snowball-btn">Calculate</button>
-          </form>
-        </section>
+        <form class='snowball-control' data-controller='payoff' method='get'>
+          <div class="form-group">
+            <label for="snowball">Enter monthly budget</label>
+            <input class="form-control snowball-input" min="0" data-target="payoff.output" type="number" name="snowball">
+          </div>
+            <button data-action="click->payoff#calculateSnowball" type="button" name="button" class="btn btn-primary">Submit</button>
+        </form>
       </section>
       <p class='debt-freedom-text'>
         <span aria-label="tada emoji" role="img"> 🎉</span>

@@ -3,14 +3,17 @@ import { Controller } from 'stimulus';
 export default class extends Controller {
   static targets = ['output'];
 
-  connect() {
-    this.outputTarget.textContent = 'Hello, Stimulus!';
-  }
+  // connect() {
+  //   this.outputTarget.textContent = 'Hello, Stimulus!';
+  // }
   calculateSnowball(event) {
     event.preventDefault();
     const {
       valueAsNumber: amount
-    } = event.target.previousSibling.previousSibling;
+    } = event.target.previousElementSibling.children[1];
+    if (Math.sign(amount) === -1) {
+      return 
+    }
     fetch(`/snowball/${amount}`)
       .then(response => response.json())
       .then(accounts => this.displayNewPayOff(accounts))

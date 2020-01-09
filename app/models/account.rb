@@ -62,15 +62,15 @@ class Account < ApplicationRecord
   end
 
   def self.starting_total
-    sum(:starting_total)
+    @sum ||= sum(:starting_total)
   end
 
   def self.paid_off_percentage
-    (sum(:starting_total) - sum(:balance)) / sum(:starting_total) * 100
+    starting_total - sum(:balance) / starting_total * 100
   end
 
   def self.current_total
-    sum(:starting_total) - sum(:balance)
+    starting_total - sum(:balance)
   end
 
   def self.debt_free_date
