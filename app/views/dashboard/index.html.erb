@@ -25,7 +25,7 @@
     Debt Freedom Date - <%= @accounts.debt_free_date %>
   </p>
   <form class="snowball-control" data-controller="payoff" method="get">
-    <input data-target="payoff.output" type="number" name="snowball">
+    <input id="snowball-input" data-target="payoff.output" type="number" name="snowball">
     <button data-action='click->payoff#calculateSnowball' type="button" name="button">Calculate</button>
   </form>
 </section>
