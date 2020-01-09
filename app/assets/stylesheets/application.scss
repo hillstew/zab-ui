@@ -29,6 +29,49 @@ body {
   height: 100vh;
 }
 
+.ynab-connection-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+}
+
+.ynab-connection-wrapper svg {
+  margin: auto;
+  padding: auto 40px;
+  width: 95%;
+}
+
+.ynab-connection-wrapper section {
+  background-color: #302e41;
+  padding: 50px;
+  text-align: justify;
+}
+
+.ynab-connection-wrapper section h1 {
+  color: #f6f7fb;
+  line-height: 70px;
+  margin: 110px auto;
+}
+
+.ynab-connection-wrapper section h1 mark {
+  background-color: #d1cee2;
+  color: #302e41;
+  line-height: 70px;
+  letter-spacing: -2px;
+  margin: 110px auto;
+}
+
+.ynab-connection-wrapper section input {
+  font-size: 23px;
+  height: 50px;
+  width: 300px;
+}
+
+.ynab-connection-wrapper section h1 span {
+  color: #007bff;
+  text-decoration: underline;
+}
+
 .progress-header {
   display: flex;
   flex-direction: column;
@@ -194,7 +237,7 @@ aside {
   border-radius: 10px;
   text-align: center;
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-  0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
 
 .snowball-wrapper p {
@@ -217,5 +260,5 @@ aside {
   margin-top: 5px;
   width: 65%;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
-  0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
 }
