@@ -1,70 +1,76 @@
 <%= javascript_pack_tag 'application' %>
-<section class="progress-control-wrapper">
-  <div class="progress debt-progress">
-    <div
-        class="progress-bar debt-payoff-bar"
-        role="progressbar"
-        style="width: <%= number_to_percentage(@accounts.paid_off_percentage) %>"
-        aria-valuenow=" <%= @accounts.paid_off_percentage %>"
-        aria-valuemin="0"
-        aria-valuemax="100">
-        <p class="progress-current-total">
-          <%= number_to_currency(@accounts.current_total) %>
-        </p>
-    </div>
-    <p class="progress-starting-total">
-      <%= number_to_currency(@accounts.starting_total) %>
-    </p>
-  </div>
-  <p>
-    <span
-      aria-label="tada emoji"
-      role="img">
-      🎉
-    </span>
-    Debt Freedom Date - <%= @accounts.debt_free_date %>
-  </p>
-  <form class="snowball-control" data-controller="payoff" method="get">
-    <input data-target="payoff.output" type="number" name="snowball">
-    <button data-action='click->payoff#calculateSnowball' type="button" name="button">Calculate</button>
-  </form>
-</section>
-
-
-
-<h1>Your debt payoff schedule</h1>
-<div class='container'>
-  <table class="table table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th>Name</th>
-        <th>Current Balance</th>
-        <th>Interest Rate</th>
-        <th>Minimum Payment</th>
-        <th>Snowball</th>
-        <th>Total Payment</th>
-        <th>Payoff Date</th>
-      </tr>
-    </thead>
-    <tbody>
-  <% @accounts.each_with_index do |account, index| %>
-  <section id= "account-<%= account.id %>">
-    <tr>
-        <td><%= account.name %></td>
-        <td><%= number_to_currency(account.balance) %></td>
-        <td><%= number_to_percentage(account.interest_rate, precision: 2) %></td>
-        <td><%= number_to_currency(account.min_payment) %></td>
-        <% if index == 0 %>
-          <td id='snowball-<%= account.id %>'><%= number_to_currency(account.snowball) %></td>
-          <td id='total_payment-<%= account.id %>'><%= number_to_currency(account.min_payment + account.snowball) %></td>
-        <% else %>
-          <td id='snowball-<%= account.id %>'><%= number_to_currency(0) %></td>
-          <td id='total_payment-<%= account.id %>'><%= number_to_currency(account.min_payment) %></td>
-        <% end %>
-        <td id='payoff_date-<%= account.id %>'><%= account.payoff_date %></td>
-    </tr>
+<section class='dashboard'>
+  <%= render 'partials/navbar' %>
+  <section class='main'>
+    <section class="progress-header">
+      <h4>Payoff progress</h4>
+      <section class="progress-control-wrapper">
+        <div class="progress debt-progress">
+          <div
+              class="progress-bar debt-payoff-bar"
+              role="progressbar"
+              style="width: <%= number_to_percentage(@accounts.paid_off_percentage) %>"
+              aria-valuenow=" <%= @accounts.paid_off_percentage %>"
+              aria-valuemin="0"
+              aria-valuemax="100">
+              <p class="progress-current-total">
+                <%= number_to_currency(@accounts.current_total) %>
+              </p>
+          </div>
+          <p class="progress-starting-total">
+            <%= number_to_currency(@accounts.starting_total) %>
+          </p>
+        </div>
+        <section class='snowball-wrapper'>
+          <p>Enter your monthly debt budget</p>
+          <form class="snowball-control" data-controller="payoff" method="get" >
+            <input class="snowball-input" data-target="payoff.output" type="number" name="snowball">
+            <button data-action='click->payoff#calculateSnowball' type="button" name="button" class= "btn btn-primary snowball-btn">Calculate</button>
+          </form>
+        </section>
+      </section>
+      <p class='debt-freedom-text'>
+        <span aria-label="tada emoji" role="img"> 🎉</span>
+        Debt Freedom Date - <%= @accounts.debt_free_date %>
+      </p>
+    </section>
+    <section class='payoff-schedule-wrapper'>
+      <h4>Payoff schedule</h4>
+      <div class='container'>
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>Name</th>
+              <th>Current Balance</th>
+              <th>Interest Rate</th>
+              <th>Minimum Payment</th>
+              <th>Snowball</th>
+              <th>Total Payment</th>
+              <th>Payoff Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @accounts.each_with_index do |account, index| %>
+              <section id= "account-<%= account.id %>">
+                <tr>
+                    <td><%= account.name %></td>
+                    <td><%= number_to_currency(account.balance) %></td>
+                    <td><%= number_to_percentage(account.interest_rate, precision: 2) %></td>
+                    <td><%= number_to_currency(account.min_payment) %></td>
+                    <% if index == 0 %>
+                      <td id='snowball-<%= account.id %>'><%= number_to_currency(account.snowball) %></td>
+                      <td id='total_payment-<%= account.id %>'><%= number_to_currency(account.min_payment + account.snowball) %></td>
+                    <% else %>
+                      <td id='snowball-<%= account.id %>'><%= number_to_currency(0) %></td>
+                      <td id='total_payment-<%= account.id %>'><%= number_to_currency(account.min_payment) %></td>
+                    <% end %>
+                    <td id='payoff_date-<%= account.id %>'><%= account.payoff_date %></td>
+                </tr>
+              </section>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </section>
   </section>
-  <% end %>
-</tbody>
-</table>
-</div>
+</section>
