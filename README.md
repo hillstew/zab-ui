@@ -55,7 +55,7 @@ Associated backend repo can be found [here](https://github.com/dForDeveloper/pai
 
 ### Contributors
 
-[Zac Isaacson](https://github.com/zacisaacson)
-[Laura Schulz](https://github.com/lrs8810)
-[Hillary Stewart](https://github.com/hillstew)  
-[Graham Thompson](https://github.com/grwthomps)
+- [Zac Isaacson](https://github.com/zacisaacson)
+- [Laura Schulz](https://github.com/lrs8810)
+- [Hillary Stewart](https://github.com/hillstew)  
+- [Graham Thompson](https://github.com/grwthomps)
