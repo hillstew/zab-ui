@@ -46,15 +46,5 @@ RSpec.describe Account, type: :model do
       expect(@account_2.snowball).to eq(750)
       expect(@account_3.snowball).to eq(850)
     end
-
-    xit '#starting_total' do
-      accounts = Account.all
-
-      expect(accounts.starting_total).to eq(4.5)
-    end
-
-    xit '#paid_off_percentage' do
-
-    end
   end
 end
