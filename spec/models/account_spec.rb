@@ -42,7 +42,7 @@ RSpec.describe Account, type: :model do
       @account_2.reload
       @account_3.reload
 
-      expect(@account_1.count).to eq(DateTime.now.month + 3)
+      expect(@account_1.snowball).to eq(550)
       expect(@account_2.snowball).to eq(750)
       expect(@account_3.snowball).to eq(850)
     end
