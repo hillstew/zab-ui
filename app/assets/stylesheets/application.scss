@@ -24,6 +24,16 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+.confetti-div {
+  position: absolute;
+  z-index: 1;
+}
+
+.login-btn {
+  position: absolute;
+  z-index: 2;
+}
+
 aside {
   display: flex;
   flex-direction: column;
@@ -37,6 +47,10 @@ tr {
 
 th {
   font-weight: 400;
+}
+
+#my-index {
+  height: 100vh;
 }
 
 .dashboard {

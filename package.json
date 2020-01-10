@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",
+    "confetti-js": "0.0.16",
     "stimulus": "^1.1.1",
     "turbolinks": "^5.2.0"
   },
