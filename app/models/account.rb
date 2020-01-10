@@ -66,7 +66,7 @@ class Account < ApplicationRecord
   end
 
   def self.paid_off_percentage
-    starting_total - sum(:balance) / starting_total * 100
+    (starting_total - sum(:balance)) / starting_total * 100
   end
 
   def self.current_total

@@ -18,6 +18,9 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,900&display=swap');
 @import 'bootstrap';
 
+$light-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+
+
 body {
   box-sizing: border-box;
   height: 100vh;
@@ -35,6 +38,7 @@ body {
 }
 
 aside {
+  background-color: #eaecef;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -130,10 +134,6 @@ th {
   padding: 30px 50px;
 }
 
-aside {
-  background-color: #f6f7fb;
-}
-
 input[type='checkbox'] {
   -webkit-appearance: none;
   width: 38px;
@@ -161,10 +161,14 @@ input[type='checkbox']:checked {
 
 .zab-h1 {
   font-family: 'Poppins', sans-serif;
-  font-size: 8rem;
+  font-size: 7.5rem;
   font-weight: 900;
   height: 120px;
   margin: 0;
+}
+
+.welcome-progress-bars {
+  margin-top: 40px;
 }
 
 .logo-period {
@@ -276,13 +280,12 @@ input[type='checkbox']:checked {
 }
 
 .snowball-control {
-  background-color: #f6f7fb;
+  background-color: #e9ecef;
   height: 145px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: $light-shadow;
   border-radius: 10px;
 }
 
@@ -299,8 +302,7 @@ input[type='checkbox']:checked {
   width: 250px;
   border-radius: 10px;
   text-align: center;
-  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: $light-shadow;
 }
 
 .snowball-wrapper p {
@@ -313,6 +315,10 @@ input[type='checkbox']:checked {
   margin-top: 40px;
 }
 
+.payoff-schedule-wrapper table {
+  box-shadow: $light-shadow;
+}
+
 .container {
   padding: 0;
 }
@@ -322,8 +328,7 @@ input[type='checkbox']:checked {
   border-radius: 5px;
   margin-top: 5px;
   width: 65%;
-  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
-    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+  box-shadow: $light-shadow;
 }
 
 .aside-user-info {
