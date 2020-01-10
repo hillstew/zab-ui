@@ -7,26 +7,37 @@ class AccountsController < ApplicationController
 
   def create
     accounts = check_key
-
     accounts.each do |account, details|
-      balance = (details['starting_total'].to_i.abs) / 1000
-      min_payment = details['min_payment'].to_i
-      interest_rate = ((details['interest_rate'].to_f) / 100)
       params = account_params(account, details)
-
-      if (min_payment - (balance * (interest_rate / 12))) <= 0
-        current_user.accounts.destroy_all
-        flash[:error] = "The minimum payment for #{account} is too low to cover its interest rate. Please enter a higher minimum payment."
+      if (min_payment(details) - (balance(details) * (interest_rate(details) / 12))) <= 0
+        min_payment_flash_message(account)
         return redirect_to signup_accounts_path
       else
         Account.create(params)
       end
     end
-
     redirect_to dashboard_path
   end
 
   private
+
+    def min_payment_flash_message(account)
+      current_user.accounts.destroy_all
+      flash[:error] = "The minimum payment for #{account} is too low to cover its interest rate. Please enter a higher minimum payment."
+    end
+
+    def balance(details)
+      (details['starting_total'].to_i.abs) / 1000
+    end
+
+    def min_payment(details)
+      details['min_payment'].to_i
+    end
+
+    def interest_rate(details)
+      ((details['interest_rate'].to_f) / 100)
+    end
+
     def account_params(account, details)
       {
         name: account,

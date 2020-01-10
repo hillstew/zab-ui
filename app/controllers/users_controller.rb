@@ -1,26 +1,9 @@
 class UsersController < ApplicationController
-  def new
-    @user = User.new
-  end
-
   def create
     if current_user && !current_user.accounts.empty?
       redirect_to dashboard_path
     else
-      user = User.find_by(email: user_data[:email])
-      if user.nil?
-        new_user = User.create(user_data)
-        session[:user_id] = new_user.id
-        redirect_to signup_ynab_path
-      elsif user.accounts.empty?
-        session[:user_id] = user.id
-        user.update(last_login: DateTime.now)
-        redirect_to signup_ynab_path
-      else
-        session[:user_id] = user.id
-        user.update(last_login: DateTime.now)
-        redirect_to dashboard_path
-      end
+      new_or_returing_user
     end
   end
 
@@ -37,7 +20,27 @@ class UsersController < ApplicationController
     }
   end
 
-  def user_params
-    params.require(:user).permit(:first_name, :last_name, :email)
+  def user_creation
+    new_user = User.create(user_data)
+    session[:user_id] = new_user.id
+  end
+
+  def restore_session(user)
+    session[:user_id] = user.id
+    user.update(last_login: DateTime.now)
+  end
+
+  def new_or_returing_user
+    user = User.find_by(email: user_data[:email])
+    if user.nil?
+      user_creation
+      redirect_to signup_ynab_path
+    elsif user.accounts.empty?
+      restore_session(user)
+      redirect_to signup_ynab_path
+    else
+      restore_session(user)
+      redirect_to dashboard_path
+    end
   end
 end

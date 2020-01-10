@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Dashboard::SnowballController, :type => :request do
-  describe "GET #new " do
+  describe "GET #index " do
     it "snowball amount persists on page reload" do
       user = create(:user)
       create(:account, balance: 2345, interest_rate: 10, min_payment: 200, user_id: user.id)

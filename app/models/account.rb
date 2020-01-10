@@ -28,20 +28,26 @@ class Account < ApplicationRecord
 
   def self.snowball(amount)
     ordered_accounts = ordered
-    total_payments = ordered_accounts.sum(:min_payment)
-    snowball = amount.to_f - total_payments
+    snowball = amount.to_f - ordered_accounts.total_min_payment
     count = ordered_accounts.first.total_months(snowball)
     ordered_accounts.first.update_attributes(snowball: snowball)
     ordered_accounts.each_with_index do |account, index|
       if index > 0
-        previous_account = ordered_accounts[index - 1]
         balance = account.update_balance(count)
-        snowball = previous_account.min_payment + previous_account.snowball
+        snowball = previous_account(index).min_payment + previous_account(index).snowball
         account.update(snowball: snowball)
-        payoff_month = DateTime.parse(ordered_accounts[index - 1].payoff_date)
+        payoff_month = DateTime.parse(previous_account(index).payoff_date)
         count = count += account.total_months(snowball, payoff_month, balance)
       end
     end
+  end
+
+  def self.total_min_payment
+    sum(:min_payment)
+  end
+
+  def self.previous_account(index)
+    ordered[index - 1]
   end
 
   def self.ordered
