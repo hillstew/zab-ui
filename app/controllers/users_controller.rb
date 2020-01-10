@@ -12,10 +12,14 @@ class UsersController < ApplicationController
         new_user = User.create(user_data)
         session[:user_id] = new_user.id
         redirect_to signup_ynab_path
-      else
+      elsif user.accounts.empty?
         session[:user_id] = user.id
         user.update(last_login: DateTime.now)
         redirect_to signup_ynab_path
+      else
+        session[:user_id] = user.id
+        user.update(last_login: DateTime.now)
+        redirect_to dashboard_path
       end
     end
   end
