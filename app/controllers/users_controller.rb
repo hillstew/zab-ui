@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   def create
     if current_user && !current_user.accounts.empty?
-      redirect_to dashboard_path
+      redirect_to :controller => 'accounts', :action => 'update'
+      # redirect_to dashboard_path
     else
       new_or_returing_user
     end
@@ -40,7 +41,8 @@ class UsersController < ApplicationController
       redirect_to signup_ynab_path
     else
       restore_session(user)
-      redirect_to dashboard_path
+      redirect_to :controller => 'accounts', :action => 'update' 
+      # redirect_to dashboard_path
     end
   end
 end
