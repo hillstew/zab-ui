@@ -12,7 +12,7 @@ export default class extends Controller {
       valueAsNumber: amount
     } = event.target.previousElementSibling.children[1];
     if (Math.sign(amount) === -1) {
-      return 
+      return
     }
     fetch(`/snowball/${amount}`)
       .then(response => response.json())
@@ -26,6 +26,9 @@ export default class extends Controller {
       currency: 'USD',
       minimumFractionDigits: 2
     });
+
+    const debtFreedomText = document.querySelector('.debt-freedom-text')
+    debtFreedomText.innerText = `🎉 Debt Freedom Date - ${accounts[accounts.length - 1].payoff_date}`
 
     accounts.forEach((account, index) => {
       const el = document.querySelector(`#payoff_date-${account.id}`);
