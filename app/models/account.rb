@@ -82,4 +82,12 @@ class Account < ApplicationRecord
   def self.debt_free_date
     last.payoff_date
   end
+
+  def self.paid_off_accounts
+    where('balance = 0')
+  end
+
+  def self.debt_accounts
+    where.not('balance = 0')
+  end
 end
