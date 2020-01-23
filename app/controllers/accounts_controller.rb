@@ -30,6 +30,10 @@ class AccountsController < ApplicationController
       end
       if !found.nil?
         new_balance = (found[:cleared_balance].to_i.abs) / 1000
+        if new_balance <= 0
+          new_balance = 0
+          account.update(payoff_date: DateTime.now.strftime("%b %Y"))
+        end
         account.update(balance: new_balance)
       end
     end
