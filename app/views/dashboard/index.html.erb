@@ -51,7 +51,7 @@
             </tr>
           </thead>
           <tbody>
-            <% @accounts.each_with_index do |account, index| %>
+            <% @accounts.debt_accounts.each_with_index do |account, index| %>
               <section id= "account-<%= account.id %>">
                 <tr>
                     <td><%= account.name %></td>
@@ -73,5 +73,36 @@
         </table>
       </div>
     </section>
+    <% if !@accounts.paid_off_accounts.empty? %>
+      <section class='payoff-schedule-wrapper'>
+        <h4>Paid Off Accounts</h4>
+        <div class='container'>
+          <table class="table table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th>Name</th>
+                <th>Total Debt Paid</th>
+                <th>Interest Rate</th>
+                <th>Payoff Date</th>
+                <th>Months to Payoff</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @accounts.paid_off_accounts.each do |account| %>
+                <section id= "account-<%= account.id %>">
+                  <tr>
+                      <td><%= account.name %></td>
+                      <td><%= account.starting_total %></td>
+                      <td><%= number_to_percentage(account.interest_rate, precision: 2) %></td>
+                      <td id='payoff_date-<%= account.id %>'><%= account.payoff_date %></td>
+                      <td id='payoff_date-<%= account.id %>'>Months to Payoff</td>
+                  </tr>
+                </section>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    <% end %>
   </section>
 </section>
