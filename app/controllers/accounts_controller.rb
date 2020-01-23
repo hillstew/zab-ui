@@ -19,6 +19,27 @@ class AccountsController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def update
+    service = ZabService.new
+    accounts_data = service.fetch_accounts(current_user.access_token)
+    x = accounts_data[:data][:accounts].find_all{|account| account[:deleted] == false}
+    current_accounts = current_user.accounts
+    current_accounts.each do |account|
+      found = x.find do |raw_account|
+        raw_account[:id] == account.ynab_id
+      end
+      if !found.nil?
+        new_balance = (found[:cleared_balance].to_i.abs) / 1000
+        if new_balance <= 0
+          new_balance = 0
+          account.update(payoff_date: DateTime.now.strftime("%b %Y"))
+        end
+        account.update(balance: new_balance)
+      end
+    end
+    redirect_to dashboard_path
+  end
+
   private
 
     def min_payment_flash_message(account)

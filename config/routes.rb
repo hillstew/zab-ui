@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
 
   get '/signup/ynab', to: 'ynab#new'
+  get '/accounts/update', to: 'accounts#update', as: 'accounts_update'
   patch '/signup/profile', to: 'users#update'
   get '/signup/accounts', to: 'accounts#new'
   post '/signup/accounts', to: 'accounts#create'
