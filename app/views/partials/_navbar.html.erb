@@ -3,5 +3,11 @@
     <h1><%= current_user.first_name %></h1>
     <%= image_tag "#{current_user.image}" %>
   </section>
+  <section class="aside-links">
+    <p><%= link_to "Connections", connections_path %></p>
+    <p><%= link_to "Resources", resources_path %></p>
+    <p><%= link_to "Accounts", accounts_path %></p>
+    <p><%= link_to "Profile", profile_path %></p>
+  </section>
   <%= button_to "Logout", logout_path, class: "btn btn-primary logout-btn", method: :delete if current_user %>
 </aside>
