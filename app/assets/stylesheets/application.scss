@@ -364,6 +364,13 @@ input[type='checkbox']:checked {
   width: 90px;
 }
 
+.aside-links {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 200px;
+}
+
 .logout-btn {
   margin-bottom: 20px;
   width: 130px;
