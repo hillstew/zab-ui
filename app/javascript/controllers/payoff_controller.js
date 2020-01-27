@@ -33,20 +33,45 @@ export default class extends Controller {
     accounts.forEach((account, index) => {
       const el = document.querySelector(`#payoff_date-${account.id}`);
       el.innerText = account.payoff_date;
-      if (index === 0) {
-        document.querySelector(
-          `#snowball-${account.id}`
-        ).innerText = formatter.format(account.snowball);
-        document.querySelector(
-          `#total_payment-${account.id}`
-        ).innerText = formatter.format(account.snowball + account.min_payment);
+      if (accounts[0].balance === accounts[0].snowball) {
+        if (index === 0) {
+          document.querySelector(
+            `#snowball-${account.id}`
+          ).innerText = formatter.format(account.snowball);
+          document.querySelector(
+            `#total_payment-${account.id}`
+          ).innerText = formatter.format(account.snowball);
+        } else if (account.initial_snowball > 0) {
+          document.querySelector(
+            `#snowball-${account.id}`
+          ).innerText = formatter.format(account.initial_snowball);
+          document.querySelector(
+            `#total_payment-${account.id}`
+          ).innerText = formatter.format(account.initial_snowball + account.min_payment);
+        } else {
+          document.querySelector(
+            `#snowball-${account.id}`
+          ).innerText = formatter.format(0);
+          document.querySelector(
+            `#total_payment-${account.id}`
+          ).innerText = formatter.format(account.min_payment);
+        }
       } else {
-        document.querySelector(
-          `#snowball-${account.id}`
-        ).innerText = formatter.format(0);
-        document.querySelector(
-          `#total_payment-${account.id}`
-        ).innerText = formatter.format(account.min_payment);
+        if (index === 0) {
+          document.querySelector(
+            `#snowball-${account.id}`
+          ).innerText = formatter.format(account.snowball);
+          document.querySelector(
+            `#total_payment-${account.id}`
+          ).innerText = formatter.format(account.snowball + account.min_payment);
+        } else {
+          document.querySelector(
+            `#snowball-${account.id}`
+          ).innerText = formatter.format(0);
+          document.querySelector(
+            `#total_payment-${account.id}`
+          ).innerText = formatter.format(account.min_payment);
+        }
       }
     });
   }
