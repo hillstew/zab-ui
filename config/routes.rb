@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/', to: 'welcome#index', as: 'welcome'
+  get '/privacypolicy', to: 'privacy_policy#index'
   get '/auth/ynab/callback', to: 'ynab#create'
   post '/signup', to: 'users#create'
   delete 'logout', to: 'sessions#destroy'
