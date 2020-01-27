@@ -4,7 +4,7 @@
   <%= render 'partials/navbar' %>
   <section class='main'>
     <section class="progress-header">
-      <h4>Payoff progress</h4>
+      <h4>Payoff progress toward <%= number_to_currency(@accounts.starting_total) %> of debt:</h4>
       <section class="progress-control-wrapper">
         <div class="progress debt-progress">
           <div
@@ -18,9 +18,6 @@
                 <%= number_to_currency(@accounts.current_total) %>
               </p>
           </div>
-          <p class="progress-starting-total">
-            <%= number_to_currency(@accounts.starting_total) %>
-          </p>
         </div>
         <form class='snowball-control' data-controller='payoff' method='get'>
           <div class="form-group">
