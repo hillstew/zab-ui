@@ -8,6 +8,8 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit; end
+
   private
 
   def user_data
@@ -41,7 +43,7 @@ class UsersController < ApplicationController
       redirect_to signup_ynab_path
     else
       restore_session(user)
-      redirect_to :controller => 'accounts', :action => 'update' 
+      redirect_to :controller => 'accounts', :action => 'update'
       # redirect_to dashboard_path
     end
   end

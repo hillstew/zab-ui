@@ -1,4 +1,6 @@
 class AccountsController < ApplicationController
+  def index; end
+  
   def new
     render locals: {
       user: UserDecorator.new(current_user)
