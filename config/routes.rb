@@ -14,6 +14,11 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'dashboard#index'
   get '/snowball/:amount', to: 'dashboard/snowball#index'
 
+  get '/connections', to: 'connections#index'
+  get '/accounts', to: 'accounts#index'
+  get '/resources', to: 'resources#index'
+  get '/profile', to: 'users#edit'
+
   get '/auth/google_oauth2/callback', to: 'users#create'
 
   require 'sidekiq/web'
