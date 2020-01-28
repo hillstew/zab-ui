@@ -22,7 +22,7 @@ https://zeroandbeyond.herokuapp.com/
 
 ### Microservice
 
-Associated backend repo can be found [here](https://github.com/dForDeveloper/paired-api)
+Associated backend repo can be found [here](https://github.com/zacisaacson/zab-service)
 
 ### Primary Technologies Used:
 
