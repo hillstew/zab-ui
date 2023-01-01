@@ -2,7 +2,7 @@
   "name": "zab-ui",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "3.5",
+    "@rails/webpacker": "5.4",
     "confetti-js": "0.0.16",
     "stimulus": "^1.1.1",
     "turbolinks": "^5.2.0"
